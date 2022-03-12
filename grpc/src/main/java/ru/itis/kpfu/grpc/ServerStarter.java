@@ -24,7 +24,7 @@ public class ServerStarter {
         server.start();
 
         LOGGER.info("Server successfully started on {}", server.getPort());
-        Runtime.getRuntime().addShutdownHook(new Thread (()->{
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             LOGGER.info("Received Shutdown Request");
             server.shutdown();
             LOGGER.info("Successfully stopped the server");

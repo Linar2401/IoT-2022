@@ -27,8 +27,8 @@ public class MaxClient extends RootClient {
         MathServiceGrpc.MathServiceStub mathClient = MathServiceGrpc.newStub(channel);
 
         CountDownLatch latch = new CountDownLatch(1);
-        StreamObserver<MaxRequest> requestObserver = mathClient.maxNumber(new MaxResponseObserver( latch));
-        logger.info("Enter the series for which you want to calculate the max value: ");
+        StreamObserver<MaxRequest> requestObserver = mathClient.maxNumber(new MaxResponseObserver(latch));
+        logger.info("Enter the series for which you want to calculate the max value (whitespace delimiter): ");
         Arrays.stream(scanner.nextLine().split(" "))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList())

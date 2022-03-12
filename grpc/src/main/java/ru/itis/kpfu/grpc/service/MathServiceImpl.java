@@ -30,7 +30,7 @@ public class MathServiceImpl extends MathServiceGrpc.MathServiceImplBase {
 
     @Override
     public StreamObserver<DeviationRequest> standardDeviation(StreamObserver<DeviationResponse> responseObserver) {
-        return new DeviationRequestObserver( responseObserver);
+        return new DeviationRequestObserver(responseObserver);
     }
 
     @Override

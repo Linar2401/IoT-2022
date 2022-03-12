@@ -29,7 +29,7 @@ public class DeviationRequestObserver extends RequestObserver<DeviationRequest> 
             deviation += Math.pow(num - mean, 2);
         }
 
-        deviation = Math.sqrt(deviation/dataList.size());
+        deviation = Math.sqrt(deviation / dataList.size());
     }
 
     @Override

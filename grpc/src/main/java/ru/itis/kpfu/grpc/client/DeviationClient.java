@@ -30,7 +30,7 @@ public class DeviationClient extends RootClient {
         CountDownLatch latch = new CountDownLatch(1);
         StreamObserver<DeviationRequest> requestObserver = mathClient.standardDeviation(new DeviationResponseObserver(latch));
 
-        logger.info("Enter the series for which you want to calculate the deviation: ");
+        logger.info("Enter the series for which you want to calculate the deviation (whitespace delimiter): ");
         requestObserver.onNext(DeviationRequest.newBuilder()
                 .addAllData(Arrays.stream(scanner.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList()))
                 .build());
