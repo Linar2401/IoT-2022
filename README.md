@@ -12,4 +12,4 @@
 |Задание 2| :black_square_button:  | task2 | Изменение цвета светодиода по нажатию кнопки |
 |Задание 3| :black_square_button:  | task3 | Чтение UID RFID метки |
 |Задание 4| :black_square_button:  | task4 | Чтение, отправка и получение информации через mqtt |
-|Задание 5| :black_square_button:  | task4 | gRPC |
+|Задание 5| :black_square_button:  | task5 | gRPC |
