@@ -29,7 +29,7 @@ public abstract class ResponseObserver<T> implements StreamObserver<T> {
 
     @Override
     public void onCompleted() {
-        logger.info("Server has completed evaluating deviation");
+        logger.info("Server has completed task");
         latch.countDown();
     }
 }
