@@ -3,9 +3,10 @@ package ru.itis.kpfu.grpc.service;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.itis.kpfu.grpc.MathServiceGrpc;
-import ru.itis.kpfu.grpc.SQRTRequest;
-import ru.itis.kpfu.grpc.SQRTResponse;
+import ru.itis.kpfu.grpc.*;
+import ru.itis.kpfu.grpc.observer.DeviationRequestObserver;
+
+import java.lang.Math;
 
 /**
  * @author Zagir Dingizbaev
@@ -24,5 +25,10 @@ public class MathServiceImpl extends MathServiceGrpc.MathServiceImplBase {
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<DeviationRequest> standardDeviation(StreamObserver<DeviationResponse> responseObserver) {
+        return new DeviationRequestObserver(logger, responseObserver);
     }
 }

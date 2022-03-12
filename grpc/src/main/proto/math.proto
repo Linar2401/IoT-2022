@@ -10,6 +10,16 @@ message SQRTResponse{
   double number = 1;
 }
 
+message DeviationRequest{
+  repeated int32 data = 1;
+}
+
+message DeviationResponse{
+  double deviation = 1;
+}
+
 service MathService{
   rpc SquareRoot(SQRTRequest) returns (SQRTResponse){};
+
+  rpc StandardDeviation (stream DeviationRequest) returns (DeviationResponse){};
 }

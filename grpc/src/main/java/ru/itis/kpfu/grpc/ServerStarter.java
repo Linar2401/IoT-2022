@@ -1,4 +1,4 @@
-package ru.itis.kpfu.grpc.server;
+package ru.itis.kpfu.grpc;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -11,9 +11,9 @@ import java.io.IOException;
 /**
  * @author Zagir Dingizbaev
  */
-public class MathServer {
+public class ServerStarter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MathServer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServerStarter.class);
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(5051)
