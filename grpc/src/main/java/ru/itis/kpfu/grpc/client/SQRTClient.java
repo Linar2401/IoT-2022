@@ -1,30 +1,31 @@
 package ru.itis.kpfu.grpc.client;
 
-import io.grpc.Channel;
 import io.grpc.ManagedChannel;
-import ru.itis.kpfu.grpc.MathServiceGrpc;
-import ru.itis.kpfu.grpc.SQRTRequest;
-import ru.itis.kpfu.grpc.SQRTResponse;
+import ru.itis.kpfu.grpc.model.MathServiceGrpc;
+import ru.itis.kpfu.grpc.model.SQRTRequest;
+import ru.itis.kpfu.grpc.model.SQRTResponse;
 
 /**
  * @author Zagir Dingizbaev
  */
 
-public class SQRTClient extends RootClient{
+public class SQRTClient extends RootClient {
 
     public SQRTClient(ManagedChannel channel) {
         super(channel);
     }
 
+    @Override
     public void call() {
-        logger.info("Calling {}", this.getClass().getSimpleName());
+        super.call();
 
         MathServiceGrpc.MathServiceBlockingStub mathClient = MathServiceGrpc.newBlockingStub(channel);
+        logger.info("Please, enter the number from which you want to extract the square root: ");
         SQRTRequest request = SQRTRequest.newBuilder()
-                .setNumber(4)
+                .setNumber(scanner.nextInt())
                 .build();
 
-        SQRTResponse response =  mathClient.squareRoot(request);
-        logger.debug("Response has been received from server: {}", response);
+        SQRTResponse response = mathClient.squareRoot(request);
+        logger.info("Response has been received from server: {}", response);
     }
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * @author Zagir Dingizbaev
  */
+
 public class ServerStarter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServerStarter.class);
@@ -22,6 +23,7 @@ public class ServerStarter {
 
         server.start();
 
+        LOGGER.info("Server successfully started on {}", server.getPort());
         Runtime.getRuntime().addShutdownHook(new Thread (()->{
             LOGGER.info("Received Shutdown Request");
             server.shutdown();

@@ -1,6 +1,6 @@
 syntax = "proto3";
 option java_multiple_files = true;
-package ru.itis.kpfu.grpc;
+package ru.itis.kpfu.grpc.model;
 
 message SQRTRequest{
   int32 number = 1;
@@ -18,8 +18,28 @@ message DeviationResponse{
   double deviation = 1;
 }
 
+message FactorRequest{
+  int32 number = 1;
+}
+
+message FactorResponse{
+  int32 response = 1;
+}
+
+message MaxRequest{
+  int32 number = 1;
+}
+
+message MaxResponse{
+  int32 number = 1;
+}
+
 service MathService{
   rpc SquareRoot(SQRTRequest) returns (SQRTResponse){};
 
   rpc StandardDeviation (stream DeviationRequest) returns (DeviationResponse){};
+
+  rpc NumberFactors (FactorRequest) returns (stream FactorResponse){};
+
+  rpc MaxNumber(stream MaxRequest) returns (stream MaxResponse) {};
 }

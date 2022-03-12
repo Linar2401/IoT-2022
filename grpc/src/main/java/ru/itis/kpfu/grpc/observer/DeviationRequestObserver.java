@@ -1,24 +1,22 @@
 package ru.itis.kpfu.grpc.observer;
 
 import io.grpc.stub.StreamObserver;
-import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import ru.itis.kpfu.grpc.DeviationRequest;
-import ru.itis.kpfu.grpc.DeviationResponse;
-
-import java.util.List;
+import ru.itis.kpfu.grpc.model.DeviationRequest;
+import ru.itis.kpfu.grpc.model.DeviationResponse;
 
 /**
  * @author Zagir Dingizbaev
  */
 
-@RequiredArgsConstructor
-public class DeviationRequestObserver implements StreamObserver<DeviationRequest> {
+public class DeviationRequestObserver extends RequestObserver<DeviationRequest> {
 
-    private final Logger logger;
     private final StreamObserver<DeviationResponse> responseObserver;
     private Double deviation = 0.0;
     private Double total = 0.0;
+
+    public DeviationRequestObserver(StreamObserver<DeviationResponse> responseObserver) {
+        this.responseObserver = responseObserver;
+    }
 
     @Override
     public void onNext(DeviationRequest deviationRequest) {
@@ -44,8 +42,8 @@ public class DeviationRequestObserver implements StreamObserver<DeviationRequest
         var resp = DeviationResponse.newBuilder()
                 .setDeviation(deviation)
                 .build();
-        responseObserver.onNext(resp);
         logger.info("Send result: {}", deviation);
+        responseObserver.onNext(resp);
         responseObserver.onCompleted();
     }
 }
