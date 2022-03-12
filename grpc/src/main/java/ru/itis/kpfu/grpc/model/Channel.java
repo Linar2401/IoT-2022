@@ -10,10 +10,10 @@ import lombok.Data;
 
 @Data
 public class Channel {
-    private final ManagedChannel channel;
+    private final ManagedChannel managedChannel;
 
     public Channel(String address, int port) {
-        this.channel = ManagedChannelBuilder.forAddress(address, port)
+        this.managedChannel = ManagedChannelBuilder.forAddress(address, port)
                 .usePlaintext()
                 .build();
     }
