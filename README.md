@@ -13,3 +13,4 @@
 |Задание 3| :heavy_check_mark: | task3 | Чтение UID RFID метки |
 |Задание 4| :heavy_check_mark:  | task4 | Чтение, отправка и получение информации через mqtt |
 |Задание 5| :black_square_button:  | grpc | gRPC |
+|Задание 6| :black_square_button:  | grpc-with-kafka | gRPC with Kafka|
