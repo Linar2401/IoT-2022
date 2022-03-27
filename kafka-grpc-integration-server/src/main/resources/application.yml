@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: grpc-server
+kafka:
+  message_listener: "message_listener"
+  listener-auto-startup: true
+  kafka-server: ${KAFKA_HOST:localhost:19092}
+  count-of-listeners: 1
+  topics:
+    - message_topic:10:1
+grpc:
+  server:
+    port: 3228
